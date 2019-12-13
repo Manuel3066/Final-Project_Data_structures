@@ -48,13 +48,14 @@ public class LinksListeded {
 	    	int iterator = 0;
 	    	
 	        while (cNode != null) { 
-	             
-	            // Moves unto the next node 
-	            cNode = cNode.next;
+	            
+	          
 	            if(iterator == itemPosition) {
 	            	break;
 	            }
 	            iterator++;
+	            // Moves unto the next node
+	            cNode = cNode.next;
 	           
 	        } 
 	    	return cNode.item;
