@@ -25,22 +25,12 @@ public class EFSPANEL extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	LinksListeded List1 = new LinksListeded();
-	// Could not get this part to work
-	// Theoritacally I ccreated a list inside of this class 
-	// Then append my strings to it
-	// then when i want to  change the colors
-	// this class will search through list return the string and then change the color
-	//List1.Append();
-	//List1.Append("ef1");
-	//List1.Append("ef2");
-	//List1.Append("ef3");
-	//List1.Append("ef4");
-	//List1.Append("ef5");
+	
+
 
 	//Create all the objects that will be on gui
 	final int FIELD_WIDTH = 10;
 	StopLightDrawing light = new StopLightDrawing();
-	JTextField rateField = new JTextField(FIELD_WIDTH);
 	JLabel resultLabel = new JLabel("");
 	JLabel promptLabel = new JLabel("Please Click a button for EFScale: ");
 	JButton EF0Button = new JButton("EF0");
@@ -63,7 +53,14 @@ public class EFSPANEL extends JPanel {
 	
 
 	public EFSPANEL() {
-
+		
+		List1.Append("ef0");
+		List1.Append("ef1");
+		List1.Append("ef2");
+		List1.Append("ef3");
+		List1.Append("ef4");
+		List1.Append("ef5");
+		
 		light.setPreferredSize(new Dimension(160, 260));
 
 		
@@ -85,18 +82,16 @@ public class EFSPANEL extends JPanel {
 		buttonListenerFive h = new buttonListenerFive();
 		EF5Button.addActionListener(h);
 		
-		
-		
 		add(light);
 		add(promptLabel);
+		add(resultLabel);
 		add(EF0Button);
 		add(EF1Button);
 		add(EF2Button);
 		add(EF3Button);
 		add(EF4Button);
 		add(EF5Button);
-		add(rateField);
-		add(resultLabel);
+		
 		
 		
 
