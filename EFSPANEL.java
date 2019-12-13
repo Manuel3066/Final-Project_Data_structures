@@ -25,8 +25,11 @@ import java.awt.event.ActionListener;
 
 public class EFSPANEL extends JPanel {
 	
-
-
+	private static final long serialVersionUID = 1L;
+	
+	LinksListeded list1 = new LinksListeded();
+	list1.append("efo");
+	
 	final int FIELD_WIDTH = 10;
 	StopLightDrawing light = new StopLightDrawing();
 	JTextField rateField = new JTextField(FIELD_WIDTH);
