@@ -27,7 +27,7 @@ public class LinksListeded {
 	    // Method to print the list
 	    public static void printList(LinksListeded list) 
 	    { 
-	        Node cNode = list.head; 
+	        Node cNode = head; 
 	   
 	        System.out.print("Items in the list: "); 
 	   
@@ -44,7 +44,7 @@ public class LinksListeded {
 	    //Search Algoritim that will go through the list until it finds the position requested and gives the user the item
 	    public static String searchList(LinksListeded list, int itemPosition) {
 	    	
-	    	Node cNode = list.head;
+	    	Node cNode = head;
 	    	int iterator = 0;
 	    	
 	        while (cNode != null) { 

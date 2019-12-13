@@ -1,19 +1,16 @@
 package SourceClasses;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  * @author Manuel Corral Ledezma
@@ -27,15 +24,25 @@ public class EFSPANEL extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	
-	LinksListeded list1 = new LinksListeded();
-	list1.append("efo");
-	
+	LinksListeded List1 = new LinksListeded();
+	// Could not get this part to work
+	// Theoritacally I ccreated a list inside of this class 
+	// Then append my strings to it
+	// then when i want to  change the colors
+	// this class will search through list return the string and then change the color
+	//List1.Append();
+	//List1.Append("ef1");
+	//List1.Append("ef2");
+	//List1.Append("ef3");
+	//List1.Append("ef4");
+	//List1.Append("ef5");
+
+	//Create all the objects that will be on gui
 	final int FIELD_WIDTH = 10;
 	StopLightDrawing light = new StopLightDrawing();
 	JTextField rateField = new JTextField(FIELD_WIDTH);
 	JLabel resultLabel = new JLabel("");
-	JLabel promptLabel = new JLabel("Please Enter A WindSpeed: ");
-	JButton newButton = new JButton("Submit");
+	JLabel promptLabel = new JLabel("Please Click a button for EFScale: ");
 	JButton EF0Button = new JButton("EF0");
 	JButton EF1Button = new JButton("EF1");
 	JButton EF2Button = new JButton("EF2");
@@ -43,8 +50,10 @@ public class EFSPANEL extends JPanel {
 	JButton EF4Button = new JButton("EF4");
 	JButton EF5Button = new JButton("EF5");
 	
+	//New string that will hold the current scale
 	public String switchLight = "";
-
+	
+	//Set all colors to gray
 	Color ef0 = Color.gray;
 	Color ef1 = Color.gray;
 	Color ef2 = Color.gray;
@@ -57,12 +66,27 @@ public class EFSPANEL extends JPanel {
 
 		light.setPreferredSize(new Dimension(160, 260));
 
-		buttonListener l = new buttonListener();
-		newButton.addActionListener(l);
 		
-		buttonListenerOne j = new buttonListenerOne();
+		buttonListenerZero j = new buttonListenerZero();
 		EF0Button.addActionListener(j);
-
+		
+		buttonListenerOne k = new buttonListenerOne();
+		EF1Button.addActionListener(k);
+		
+		buttonListenerTwo m = new buttonListenerTwo();
+		EF2Button.addActionListener(m);
+		
+		buttonListenerThree p = new buttonListenerThree();
+		EF3Button.addActionListener(p);
+		
+		buttonListenerFour o = new buttonListenerFour();
+		EF4Button.addActionListener(o);
+		
+		buttonListenerFive h = new buttonListenerFive();
+		EF5Button.addActionListener(h);
+		
+		
+		
 		add(light);
 		add(promptLabel);
 		add(EF0Button);
@@ -74,6 +98,7 @@ public class EFSPANEL extends JPanel {
 		add(rateField);
 		add(resultLabel);
 		
+		
 
 	}
 	
@@ -82,56 +107,76 @@ public class EFSPANEL extends JPanel {
 	 * This method takes the answer entered by the user then appropriatly assigns the color and ef rating needed to be shown to the user
 	 *
 	 */
-	class buttonListener implements ActionListener {
+	//Listeners that will change the display when the button is clicked 
+	class buttonListenerZero implements ActionListener {
 
 		@Override
-		public void actionPerformed(ActionEvent a) {
-			try {
-				double rate = Double.parseDouble(rateField.getText());
-
-				if (rate >= 65) {
-					if (rate >= 65 && rate <= 85) {
-						resultLabel.setText("EF RATING: 0");
-						switchLight = "ef0";
-					} else if (rate >= 86 && rate <= 110) {
-						resultLabel.setText("EF RATING: 1");
-						switchLight = "ef1";
-					} else if (rate >= 111 && rate <= 135) {
-						resultLabel.setText("EF RATING: 2");
-						switchLight = "ef2";
-					} else if (rate >= 136 && rate <= 165) {
-						resultLabel.setText("EF RATING: 3");
-						switchLight = "ef3";
-					} else if (rate >= 166 && rate <= 200) {
-						resultLabel.setText("EF RATING: 4");
-						switchLight = "ef4";
-					} else if (rate >= 201) {
-						resultLabel.setText("EF RATING: 5");
-						switchLight = "ef5";
-					}
-				} else {
-					throw new NumberFormatException();
-				}
-
-			} catch (NumberFormatException e) {
-				resultLabel.setText("Please enter a positive integer equal to or greater than 65");
-				switchLight = "";
-			}
+		public void actionPerformed(ActionEvent arg0) {
+			
+			resultLabel.setText("EF RATING: 0");
+			switchLight = LinksListeded.searchList(List1, 0);
 			light.changeColor();
 		}
-
+		
 	}
-	
 	class buttonListenerOne implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			
-			switchLight = "ef0";
+			resultLabel.setText("EF RATING: 1");
+			switchLight = LinksListeded.searchList(List1, 1);
 			light.changeColor();
 		}
 		
 	}
+	class buttonListenerTwo implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			resultLabel.setText("EF RATING: 2");
+			switchLight = LinksListeded.searchList(List1, 2);
+			light.changeColor();
+		}
+		
+	}
+	class buttonListenerThree implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			resultLabel.setText("EF RATING: 3");
+			switchLight = LinksListeded.searchList(List1, 3);
+			light.changeColor();
+		}
+		
+	}
+	class buttonListenerFour implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			resultLabel.setText("EF RATING: 4");
+			switchLight = LinksListeded.searchList(List1, 4);
+			light.changeColor();
+		}
+		
+	}
+	class buttonListenerFive implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			resultLabel.setText("EF RATING: 5");
+			switchLight = LinksListeded.searchList(List1, 5);
+			light.changeColor();
+		}
+		
+	}
+
+
+
 	
 	/**
 	 * 
